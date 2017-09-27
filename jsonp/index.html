@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONP</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var scriptElem = document.createElement('script')
+    scriptElem.src = 'http://localhost:8888/index.html?cb=callback'
+    window.callback = function (json) {
+      console.log(json)
+      scriptElem.remove()
+      delete window.callback
+    }
+    document.head.append(scriptElem)
+  </script>
+</body>
+</html>
